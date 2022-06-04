@@ -33,7 +33,7 @@ function addBook() {
     document.getElementById(INCOMPLETE_BOOK).append(book);
   }
 
-  updateJson();
+  updateData();
 }
 
 function createBook(
@@ -109,7 +109,7 @@ function createActionDelete(idBook) {
   actionDelete.innerHTML = '<i class="bi bi-x"></i>';
 
   actionDelete.addEventListener("click", function () {
-    let confirmation = confirm("apakah anda yakin ingin menghapus buku?");
+    let confirmation = confirm("yakin ingin menghapus buku?");
 
     if (confirmation) {
       const cardParent = document.getElementById(idBook);
@@ -119,7 +119,7 @@ function createActionDelete(idBook) {
       cardParent.dispatchEvent(new Event("eventDelete"));
 
       deleteBookFromJson(idBook);
-      updateJson();
+      updateData();
     }
   });
 
@@ -128,7 +128,7 @@ function createActionDelete(idBook) {
 
 function createActionRead(idBook) {
   const action = document.createElement("button");
-  action.classList.add("btn", "btn-sm", "btn-outline-primary");
+  action.classList.add("btn", "btn-sm", "btn-outline-success");
   action.innerHTML = '<i class="bi bi-check"></i>';
 
   action.addEventListener("click", function () {
@@ -155,7 +155,7 @@ function createActionRead(idBook) {
     );
 
     books.push(bookObject);
-    updateJson();
+    updateData();
   });
 
   return action;
@@ -190,7 +190,7 @@ function createActionUndo(idBook) {
     );
 
     books.push(bookObject);
-    updateJson();
+    updateData();
   });
 
   return action;
